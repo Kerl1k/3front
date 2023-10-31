@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import "../CSS/Manager.css";
+import MyButton from "../components/button/MyButton";
+import MyModal from "../components/modal/MyModal";
+import AddUserManager from "../components/addUserManager/AddUserManager";
+import { Link } from "react-router-dom";
 
 const Manager = () => {
+  const [modal, setModal] = useState(false);
   const [info, setInfo] = useState([
     {
       name: "qew",
@@ -21,6 +26,12 @@ const Manager = () => {
   return (
     <div>
       Managar
+      <div>
+        <MyButton onClick={() => setModal(true)}>Добавлене менеджера</MyButton>
+        <MyModal visible={modal} setVisible={setModal}>
+          <AddUserManager />
+        </MyModal>
+      </div>
       <h2>Ожидает отправки</h2>
       {info.map((inf) => (
         <div className="block_info">
